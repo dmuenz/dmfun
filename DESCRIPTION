@@ -1,0 +1,19 @@
+Package: dmfun
+Title: Hodgepodge Function Library for Daniel Muenz
+Version: 0.1
+Authors@R: 
+    person("Daniel", "Muenz", , "dmuenz@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6701-2298"))
+Description: Hodgepodge collection of functions by and for Daniel Muenz.
+License: MIT + file LICENSE
+Imports: 
+    cli,
+    ggplot2,
+    gtable,
+    pillar,
+    pkgdown,
+    rlang,
+    rstudioapi
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0
