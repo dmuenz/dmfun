@@ -13,6 +13,14 @@ Hodgepodge collection of functions by and for Daniel Muenz.
 \details{
 The functions herein have no necessary relation beyond provenance.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/dmuenz/dmfun}
+  \item Report bugs at \url{https://github.com/dmuenz/dmfun/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Daniel Muenz \email{dmuenz@gmail.com} (\href{https://orcid.org/0000-0002-6701-2298}{ORCID})
 

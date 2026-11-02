@@ -14,8 +14,8 @@ gtable_show_grobs(
 )
 }
 \arguments{
-\item{x}{A \code{gtable} object. Or a \code{ggplot} object, which will be converted to
-a gtable.}
+\item{x}{A \code{gtable} object. Or a \code{ggplot} or \code{patchwork} object, which will
+be converted to a gtable, provided those packages are available.}
 
 \item{color}{Color for grob names and border outlines.}
 

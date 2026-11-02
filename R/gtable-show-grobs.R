@@ -1,7 +1,7 @@
 #' Draw a gtable, labeling and putting a border around every non-zero grob
 #'
-#' @param x A `gtable` object. Or a `ggplot` object, which will be converted to
-#' a gtable.
+#' @param x A `gtable` object. Or a `ggplot` or `patchwork` object, which will
+#'   be converted to a gtable, provided those packages are available.
 #' @param color Color for grob names and border outlines.
 #' @param fill Fill color for borders. Semi-transparent colors work well.
 #' @param fontsize Size for grob names.
@@ -13,7 +13,7 @@ gtable_show_grobs <- function(x, color = "red", fill = "#80FFFF66",
                               fontsize = 12, labels = TRUE,
                               show_zeroGrobs = FALSE) {
 
-  if (ggplot2::is_ggplot(x)) x <- ggplot2::ggplotGrob(x)
+  x <- ggplot2gtable(x)
 
   layout <- x$layout
   n_grobs <- nrow(layout)

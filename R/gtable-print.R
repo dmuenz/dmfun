@@ -1,7 +1,7 @@
 #' Print a gtable object
 #'
-#' @param x A `gtable` object. Or a `ggplot` object, which will be converted to
-#' a gtable.
+#' @param x A `gtable` object. Or a `ggplot` or `patchwork` object, which will
+#'   be converted to a gtable, provided those packages are available.
 #' @param zsort Sort by z values? Default `FALSE`.
 #' @param show_zeroGrobs `TRUE`/`FALSE` for whether to show zeroGrobs.
 #' @param filter If a character vector of regexes, only grob names matching at
@@ -11,9 +11,9 @@
 gtable_print <- function(x, zsort = FALSE, show_zeroGrobs = TRUE,
                          filter = NULL) {
 
-  if (ggplot2::is_ggplot(x)) x <- ggplot2::ggplotGrob(x)
+  x <- ggplot2gtable(x)
 
-  caption <- capture.output(info <- print(x))[1]
+  caption <- utils::capture.output(info <- print(x))[1]
   cat(caption, "\n", sep = "")
 
   if (is.null(info))
@@ -80,7 +80,11 @@ gtable_print <- function(x, zsort = FALSE, show_zeroGrobs = TRUE,
 compress_parallel_spaces <- function(x) {
   # convert to a matrix where each cell is a single character. There's one row
   # for each element of x, with characters split into the columns.
-  char_mat <- stringr::str_split_fixed(x, "", n = max(nchar(x)))
+  char_mat <- stringi::stri_split_boundaries(
+    x,
+    type = "character",
+    simplify = TRUE
+  )
 
   # find indexes of columns that are all spaces, and whether these "space
   # columns" are just to the right of another space column.
