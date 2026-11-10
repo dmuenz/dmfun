@@ -11,10 +11,14 @@ BugReports: https://github.com/dmuenz/dmfun/issues
 Imports:
     cli,
     gtable,
+    knitr,
+    lintr,
     pkgdown,
+    pkgload,
     rlang,
     rstudioapi,
-    stringi
+    stringi,
+    withr
 Suggests:
     ggplot2,
     patchwork
