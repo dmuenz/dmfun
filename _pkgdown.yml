@@ -1,0 +1,4 @@
+url: https://dmuenz.github.io/dmfun/
+template:
+  bootstrap: 5
+  light-switch: true

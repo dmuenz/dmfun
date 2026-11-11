@@ -4,3 +4,7 @@
 ^LICENSE\.md$
 ^logo$
 ^lint-package\.md$
+^README\.qmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
