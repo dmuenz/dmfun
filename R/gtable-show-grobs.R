@@ -13,11 +13,17 @@ gtable_show_grobs <- function(x, color = "red", fill = "#80FFFF66",
                               fontsize = 12, labels = TRUE,
                               show_zeroGrobs = FALSE) {
 
-  x <- ggplot2gtable(x)
+  x <- gtable::as.gtable(x)
 
   layout <- x$layout
   n_grobs <- nrow(layout)
-  layout$grob_id <- 1:n_grobs
+
+  if (n_grobs == 0) {
+    cli::cli_alert_info("{.arg x} has no grobs so there is nothing to draw.")
+    return(invisible(x))
+  }
+
+  layout$grob_id <- seq_len(n_grobs)
   layout <- layout[order(layout$z), ]
 
   z_max <- max(layout$z)
@@ -27,7 +33,7 @@ gtable_show_grobs <- function(x, color = "red", fill = "#80FFFF66",
     else paste0(min, "-", max)
   }
 
-  for (i in 1:n_grobs) {
+  for (i in seq_len(n_grobs)) {
     grid_id <- layout$grob_id[i]
     name <- layout$name[i]
     y_range <- make_range(layout$t[i], layout$b[i])

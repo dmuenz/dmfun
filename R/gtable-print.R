@@ -11,7 +11,7 @@
 gtable_print <- function(x, zsort = FALSE, show_zeroGrobs = TRUE,
                          filter = NULL) {
 
-  x <- ggplot2gtable(x)
+  x <- gtable::as.gtable(x)
 
   caption <- utils::capture.output(info <- print(x))[1]
   cat(caption, "\n", sep = "")
