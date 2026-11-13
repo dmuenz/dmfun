@@ -1,0 +1,47 @@
+# dmfun <img src="man/figures/logo.png" align="right" height="150" alt="" />
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+**dmfun** provides miscellaneous functions, mostly for helping with R package
+development. Generally, the functions are meant to be used interactively as
+you're developing a package.
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+```r
+# install.packages("pak")
+pak::pak("dmuenz/dmfun")
+```
+
+## Functions
+
+Here's a brief description of all dmfun's functions.
+
+- `build_and_preview_article()`: When writing an article or vignette for your
+  **pkgdown** site, you may want to quickly build and preview it. This function
+  does both of those things! By default it works with the active file in your
+  IDE, so you don't need to pass any arguments.
+
+- `debug_print()`: When debugging a function, debugging tools built into an IDE
+  can be great, but sometimes you just want to print an object that's causing
+  problems. Instead of using `print()`, try using `debug_print()`: it will print
+  to the console the expression that you pass to it, along with the parent
+  function name and the output of the expression. So it gives you more context
+  than just using `print()`.
+
+- `gtable_print()`: Prints a **gtable** object in an easier-to-read format
+  compared to the default gtable print method. There are also extra options for
+  conveniently subsetting the printed gtable.
+
+- `gtable_show_grobs()`: Draws a gtable, labeling and putting a border around
+  every non-zero grob.
+
+- `lint_package_to_md()`: Lints a package using `lintr::lint_package()` and
+  writes the findings to a Markdown file.
+
+- `print_tbl`: Prints a **tibble** with optional control over the column type
+  row, row IDs, and tibble header. Apart from these display options, normal
+  tibble printing behavior is preserved.
