@@ -41,8 +41,9 @@ Here's a brief description of all **dmfun**'s functions.
   around every non-zero grob.
 
 - `lint_package_to_md()`: Lints a package using `lintr::lint_package()` and
-  writes the findings to a Markdown file.
+  writes the findings to a Markdown file. There's also `lint_simplify()`, a
+  little helper that converts a lintr object to a concise data frame.
 
-- `print_tbl`: Prints a **tibble** with optional control over the column type
+- `print_tbl()`: Prints a **tibble** with optional control over the column type
   row, row IDs, and tibble header. Apart from these display options, normal
   tibble printing behavior is preserved.
