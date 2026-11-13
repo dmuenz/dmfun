@@ -148,6 +148,6 @@ pos_fmt <- function(side1, side2) {
 
 tibble_info <- function(x, .envir = parent.frame()) {
   x <- cli::format_inline(x, .envir = .envir)
-  x <- paste("# ℹ", x)
+  x <- paste("# \u2139", x)
   cat(pillar::style_subtle(x), "\n", sep = "")
 }
