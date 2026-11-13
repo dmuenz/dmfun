@@ -33,12 +33,14 @@ lint_package_to_md <- function(path = ".", ...) {
 
 {Sys.Date()}
 
-[`lintr::lint_package()`](https://lintr.r-lib.org/reference/lint.html)
-reported {cli::no(nrow(lint))} finding{?s}.
+[`lintr::lint_package()`][lintr] reported {cli::no(nrow(lint))} finding{?s}.
 
 {lint_table}
 
-<br>Created by `dmfun::lint_package_to_md()`.",
+<br>Created by [`dmfun::lint_package_to_md()`][dmfun].
+
+[lintr]: https://lintr.r-lib.org/reference/lint.html
+[dmfun]: https://dmuenz.github.io/dmfun/reference/lint_package_to_md.html",
     collapse = FALSE
   ) |>
     gsub("!EOL!", "\n", x = _, fixed = TRUE) |>
