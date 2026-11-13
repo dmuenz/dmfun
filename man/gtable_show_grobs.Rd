@@ -31,3 +31,6 @@ regex such that only grob names matching the regex will be printed.}
 \description{
 Draw a gtable, labeling and putting a border around every non-zero grob
 }
+\seealso{
+\code{\link[=gtable_print]{gtable_print()}}
+}

@@ -8,6 +8,8 @@
 #' @param labels Either `TRUE`/`FALSE` for whether to print the grob names, or a
 #' regex such that only grob names matching the regex will be printed.
 #' @param show_zeroGrobs `TRUE`/`FALSE` for whether to show zeroGrobs.
+#'
+#' @seealso [gtable_print()]
 #' @export
 gtable_show_grobs <- function(x, color = "red", fill = "#80FFFF66",
                               fontsize = 12, labels = TRUE,
