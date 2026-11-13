@@ -93,16 +93,10 @@ gtable_print <- function(
   # Optionally keep rows of info whose names match at least one regex in filter
   n_filter_hidden <- 0
   if (!is.null(filter)) {
-    n_before <- nrow(info)
-
-    keep <- lapply(filter, \(f) grep(f, info$name, perl = TRUE)) |>
-      unlist() |>
-      unique() |>
-      sort()
-
+    keep <- Reduce(`|`, lapply(filter, \(f) grepl(f, info$name, perl = TRUE)))
     info <- info[keep, ]
 
-    n_filter_hidden <- n_before - nrow(info)
+    n_filter_hidden <- sum(!keep)
   }
 
   # Combine the t, b, l, and r columns into one new column like "(t-b, l-r)"
