@@ -4,11 +4,11 @@
 \name{dmfun-package}
 \alias{dmfun}
 \alias{dmfun-package}
-\title{dmfun: Hodgepodge Function Library for Daniel Muenz}
+\title{dmfun: Miscellaneous Functions Primarily for R Package Development}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Hodgepodge collection of functions by and for Daniel Muenz.
+Hodgepodge collection of functions, mostly for helping with R package development. Generally, the functions are meant to be used interactively as you're developing a package.
 }
 \details{
 The functions herein have no necessary relation beyond provenance.
@@ -17,6 +17,7 @@ The functions herein have no necessary relation beyond provenance.
 Useful links:
 \itemize{
   \item \url{https://github.com/dmuenz/dmfun}
+  \item \url{https://dmuenz.github.io/dmfun/}
   \item Report bugs at \url{https://github.com/dmuenz/dmfun/issues}
 }
 
