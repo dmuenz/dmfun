@@ -16,10 +16,12 @@ Imports:
     gtable,
     knitr,
     lintr,
+    pillar,
     pkgdown,
     pkgload,
     rlang,
     rstudioapi,
+    tibble,
     withr
 Suggests:
     ggplot2,
