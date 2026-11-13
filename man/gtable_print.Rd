@@ -2,13 +2,13 @@
 % Please edit documentation in R/gtable-print.R
 \name{gtable_print}
 \alias{gtable_print}
-\title{Print a gtable object}
+\title{Print a gtable object as a tibble}
 \usage{
 gtable_print(x, zsort = FALSE, show_zeroGrobs = TRUE, filter = NULL)
 }
 \arguments{
-\item{x}{A \code{gtable} object. Or a \code{ggplot} or \code{patchwork} object, which will
-be converted to a gtable, provided those packages are available.}
+\item{x}{A \code{gtable} object, or an object coercible to a \code{gtable}, like a
+\code{ggplot} or \code{patchwork} object.}
 
 \item{zsort}{Sort by z values? Default \code{FALSE}.}
 
@@ -19,5 +19,37 @@ least one regex will be printed. If \code{NULL} (the default), no filtering by
 grob name.}
 }
 \description{
-Print a gtable object
+Prints a \link[gtable:gtable-package]{gtable} object in an easier-to-read format
+compared to the \link[gtable:print.gtable]{default gtable print method}. There
+are also extra options for conveniently subsetting the printed gtable.
+}
+\details{
+\code{gtable_print()} prints a gtable's layout using a custom tibble subclass,
+allowing for some parts of a standard printed tibble to be hidden, like the
+\code{"# A tibble..."} header line and the row of column types.
+
+The \code{cells} column in the output is slightly different than the \code{cells}
+column in the default gtable print method. Specifically, \code{gtable_print()}
+simplifies \code{cells} in cases where a grob sits in only one row or one column.
+E.g., if a grob is just in row 3 and column 2, then the default method would
+print \code{"(3-3, 2-2)"}, while \code{gtable_print()} prints \code{"(3, 2)"}.
+}
+\examples{
+# Let's print the gtable of a ggplot object. For comparison we'll use both
+# the default method and gtable_print().
+library(ggplot2)
+p <- ggplot(mtcars, aes(hp, mpg))
+
+# Convert p to a gtable and print with the default printing method. Note that
+# the "grob" column may get separated from the rest of the table, depending
+# on the console width. That makes it hard to read.
+gtable::as.gtable(p)
+
+# Better printing with gtable_print() -- the columns all stay together, with
+# wide columns (e.g., "grob") getting abbreviated if needed. Note that
+# gtable_print() handles the conversion of p to a gtable automatically.
+gtable_print(p)
+}
+\seealso{
+\code{\link[=gtable_show_grobs]{gtable_show_grobs()}}
 }
