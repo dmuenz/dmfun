@@ -1,6 +1,7 @@
 # dmfun <img src="man/figures/logo.png" align="right" height="150" alt="" />
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/dmuenz/dmfun/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dmuenz/dmfun/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **dmfun** provides miscellaneous functions, mostly for helping with R package
@@ -18,7 +19,7 @@ pak::pak("dmuenz/dmfun")
 
 ## Functions
 
-Here's a brief description of all dmfun's functions.
+Here's a brief description of all **dmfun**'s functions.
 
 - `build_and_preview_article()`: When writing an article or vignette for your
   **pkgdown** site, you may want to quickly build and preview it. This function
@@ -36,8 +37,8 @@ Here's a brief description of all dmfun's functions.
   compared to the default gtable print method. There are also extra options for
   conveniently subsetting the printed gtable.
 
-- `gtable_show_grobs()`: Draws a gtable, labeling and putting a border around
-  every non-zero grob.
+- `gtable_show_grobs()`: Draws a **gtable**, labeling and putting a border
+  around every non-zero grob.
 
 - `lint_package_to_md()`: Lints a package using `lintr::lint_package()` and
   writes the findings to a Markdown file.
