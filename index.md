@@ -48,8 +48,11 @@ Here’s a brief description of all **dmfun**’s functions.
 - [`lint_package_to_md()`](https://dmuenz.github.io/dmfun/reference/lint_package_to_md.md):
   Lints a package using
   [`lintr::lint_package()`](https://lintr.r-lib.org/reference/lint.html)
-  and writes the findings to a Markdown file.
+  and writes the findings to a Markdown file. There’s also
+  [`lint_simplify()`](https://dmuenz.github.io/dmfun/reference/lint_simplify.md),
+  a little helper that converts a lintr object to a concise data frame.
 
-- `print_tbl`: Prints a **tibble** with optional control over the column
-  type row, row IDs, and tibble header. Apart from these display
-  options, normal tibble printing behavior is preserved.
+- [`print_tbl()`](https://dmuenz.github.io/dmfun/reference/print_tbl.md):
+  Prints a **tibble** with optional control over the column type row,
+  row IDs, and tibble header. Apart from these display options, normal
+  tibble printing behavior is preserved.
