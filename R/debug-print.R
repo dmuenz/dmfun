@@ -9,6 +9,17 @@
 #'
 #' @returns Invisibly returns `x`.
 #' @export
+#' @examples
+#' # inspect `x` inside a function
+#' my_sum <- function(x) {
+#'   debug_print(x)
+#'   sum(x, na.rm = TRUE)
+#' }
+#'
+#' my_sum(1:5)
+#'
+#' # debug_print also works out of a function
+#' debug_print(1:5 + 6)
 debug_print <- function(x, note = NULL) {
   traces <- rlang::trace_back(bottom = 2)$call |> lapply(\(tr) {
     as.character(tr) |> stats::setNames(names(tr))

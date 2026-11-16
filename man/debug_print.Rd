@@ -19,3 +19,15 @@ The name/call of the object, along with the name of the function from which
 \code{debug_print} is called, are also printed. The whole thing is surrounded by
 horizontal lines. This may be useful for debugging.
 }
+\examples{
+# inspect `x` inside a function
+my_sum <- function(x) {
+  debug_print(x)
+  sum(x, na.rm = TRUE)
+}
+
+my_sum(1:5)
+
+# debug_print also works out of a function
+debug_print(1:5 + 6)
+}
