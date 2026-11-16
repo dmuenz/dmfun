@@ -1,6 +1,13 @@
 # Build and preview an article for a pkgdown website
 
-Build and preview an article for a pkgdown website
+When writing an article or vignette for your pkgdown site, you may want
+to quickly build and preview it. This function does both of those
+things! It uses
+[`pkgdown::build_article()`](https://pkgdown.r-lib.org/reference/build_articles.html)
+and
+[`pkgdown::preview_site()`](https://pkgdown.r-lib.org/reference/preview_site.html).
+By default it works with the active file in your IDE (using the
+rstudioapi package), so you don't need to pass any arguments.
 
 ## Usage
 
@@ -20,3 +27,11 @@ build_and_preview_article(name = NULL, ...)
 
   Additional parameters passed to
   [`pkgdown::build_article()`](https://pkgdown.r-lib.org/reference/build_articles.html).
+
+## Examples
+
+``` r
+if (FALSE) { # interactive()
+build_and_preview_article()
+}
+```

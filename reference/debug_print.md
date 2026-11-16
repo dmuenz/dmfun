@@ -23,3 +23,31 @@ debug_print(x, note = NULL)
 ## Value
 
 Invisibly returns `x`.
+
+## Examples
+
+``` r
+# inspect `x` inside a function
+my_sum <- function(x) {
+  debug_print(x)
+  sum(x, na.rm = TRUE)
+}
+
+my_sum(1:5)
+#> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+#> Printing x
+#>     from my_sum()
+#> --------
+#> [1] 1 2 3 4 5
+#> ____________________
+#> [1] 15
+
+# debug_print also works out of a function
+debug_print(1:5 + 6)
+#> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+#> Printing 1:5 + 6
+#>     from eval()
+#> --------
+#> [1]  7  8  9 10 11
+#> ____________________
+```
