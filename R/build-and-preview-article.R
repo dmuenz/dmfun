@@ -1,11 +1,20 @@
 #' Build and preview an article for a pkgdown website
 #'
+#' When writing an article or vignette for your pkgdown site, you may want to
+#' quickly build and preview it. This function does both of those things! It
+#' uses [pkgdown::build_article()] and [pkgdown::preview_site()]. By default it
+#' works with the active file in your IDE (using the rstudioapi package), so you
+#' don't need to pass any arguments.
+#'
 #' @param name Name of article. This should be either a path relative to
 #'   `⁠vignettes/`⁠ *without extension*, or `index` or `README` or `NULL`. If
 #'   `NULL` (the default), then the currently active article source file will be
 #'   used.
 #' @param ... Additional parameters passed to [pkgdown::build_article()].
+#'
 #' @export
+#' @examplesIf interactive()
+#' build_and_preview_article()
 build_and_preview_article <- function(name = NULL, ...) {
   if (is.null(name)) {
     is_match <- FALSE
@@ -51,10 +60,10 @@ build_and_preview_article <- function(name = NULL, ...) {
     Filter(\(name) file.exists(file.path("vignettes", name)), x = _)
 
   if (length(name_options) == 0)
-    cli::cli_abort("Can't find article {.field name}")
+    cli::cli_abort("Can't find article {.field {name}}")
 
   if (length(name_options) > 1)
-    cli::cli_abort("Too many files match the name {.field name}:\n
+    cli::cli_abort("Too many files match the name {.field {name}}:\n
       {.file {name_options}}")
 
   name <- sub("\\.[Rq]md", "", name_options)

@@ -15,5 +15,14 @@ used.}
 \item{...}{Additional parameters passed to \code{\link[pkgdown:build_article]{pkgdown::build_article()}}.}
 }
 \description{
-Build and preview an article for a pkgdown website
+When writing an article or vignette for your pkgdown site, you may want to
+quickly build and preview it. This function does both of those things! It
+uses \code{\link[pkgdown:build_article]{pkgdown::build_article()}} and \code{\link[pkgdown:preview_site]{pkgdown::preview_site()}}. By default it
+works with the active file in your IDE (using the rstudioapi package), so you
+don't need to pass any arguments.
+}
+\examples{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+build_and_preview_article()
+\dontshow{\}) # examplesIf}
 }
