@@ -38,12 +38,12 @@ debug_print <- function(x, note = NULL) {
     caller_vec[[1]]
   }
 
-  cat("/================\n")
+  cat(strrep("\u203E", 20), "\n", sep = "")
   cat("Printing ", deparse(substitute(x)), "\n", sep = "")
   if (!is.null(caller)) cat("    from ", caller, "()\n", sep = "")
   if (!is.null(note)) cat("Note: ", note, "\n", sep = "")
-  cat("--------\n")
+  cat(strrep("-", 8), "\n", sep = "")
   print(x)
-  cat("================/\n")
+  cat(strrep("_", 20), "\n", sep = "")
   invisible(x)
 }
