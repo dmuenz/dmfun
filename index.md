@@ -42,8 +42,7 @@ Here’s a brief description of all **dmfun**’s functions.
   conveniently subsetting the printed gtable.
 
 - [`gtable_show_grobs()`](https://dmuenz.github.io/dmfun/reference/gtable_show_grobs.md):
-  Draws a **gtable**, labeling and putting a border around every
-  non-zero grob.
+  Draws a **gtable** object, labeling and putting border around grobs.
 
 - [`lint_package_to_md()`](https://dmuenz.github.io/dmfun/reference/lint_package_to_md.md):
   Lints a package using

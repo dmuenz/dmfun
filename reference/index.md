@@ -9,8 +9,7 @@
 - [`gtable_print()`](https://dmuenz.github.io/dmfun/reference/gtable_print.md)
   : Print a gtable object as a tibble
 - [`gtable_show_grobs()`](https://dmuenz.github.io/dmfun/reference/gtable_show_grobs.md)
-  : Draw a gtable, labeling and putting a border around every non-zero
-  grob
+  : Draw a gtable object, labeling and putting borders around grobs
 - [`lint_package_to_md()`](https://dmuenz.github.io/dmfun/reference/lint_package_to_md.md)
   : Lint a package and write findings to Markdown
 - [`lint_simplify()`](https://dmuenz.github.io/dmfun/reference/lint_simplify.md)

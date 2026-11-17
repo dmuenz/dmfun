@@ -1,6 +1,8 @@
-# Draw a gtable, labeling and putting a border around every non-zero grob
+# Draw a gtable object, labeling and putting borders around grobs
 
-Draw a gtable, labeling and putting a border around every non-zero grob
+Draws a [gtable](https://gtable.r-lib.org/reference/gtable-package.html)
+object overlaid with the figure layout. I.e., by every non-zero grob is
+labeled and given a border.
 
 ## Usage
 
@@ -19,8 +21,8 @@ gtable_show_grobs(
 
 - x:
 
-  A `gtable` object. Or a `ggplot` or `patchwork` object, which will be
-  converted to a gtable, provided those packages are available.
+  A `gtable` object, or an object coercible to a `gtable`, like a
+  `ggplot` or `patchwork` object.
 
 - color:
 
@@ -46,3 +48,18 @@ gtable_show_grobs(
 ## See also
 
 [`gtable_print()`](https://dmuenz.github.io/dmfun/reference/gtable_print.md)
+
+## Examples
+
+``` r
+library(ggplot2)
+p <- ggplot(mtcars, aes(hp, mpg)) +
+  geom_point()
+
+# show the plot
+p
+
+
+# show the plot overlaid with the plot layout
+gtable_show_grobs(p)
+```
