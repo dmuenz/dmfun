@@ -2,7 +2,7 @@
 % Please edit documentation in R/gtable-show-grobs.R
 \name{gtable_show_grobs}
 \alias{gtable_show_grobs}
-\title{Draw a gtable, labeling and putting a border around every non-zero grob}
+\title{Draw a gtable object, labeling and putting borders around grobs}
 \usage{
 gtable_show_grobs(
   x,
@@ -14,8 +14,8 @@ gtable_show_grobs(
 )
 }
 \arguments{
-\item{x}{A \code{gtable} object. Or a \code{ggplot} or \code{patchwork} object, which will
-be converted to a gtable, provided those packages are available.}
+\item{x}{A \code{gtable} object, or an object coercible to a \code{gtable}, like a
+\code{ggplot} or \code{patchwork} object.}
 
 \item{color}{Color for grob names and border outlines.}
 
@@ -29,7 +29,19 @@ regex such that only grob names matching the regex will be printed.}
 \item{show_zeroGrobs}{\code{TRUE}/\code{FALSE} for whether to show zeroGrobs.}
 }
 \description{
-Draw a gtable, labeling and putting a border around every non-zero grob
+Draws a \link[gtable:gtable-package]{gtable} object overlaid with the figure
+layout. I.e., by every non-zero grob is labeled and given a border.
+}
+\examples{
+library(ggplot2)
+p <- ggplot(mtcars, aes(hp, mpg)) +
+  geom_point()
+
+# show the plot
+p
+
+# show the plot overlaid with the plot layout
+gtable_show_grobs(p)
 }
 \seealso{
 \code{\link[=gtable_print]{gtable_print()}}

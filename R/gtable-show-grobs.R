@@ -1,7 +1,10 @@
-#' Draw a gtable, labeling and putting a border around every non-zero grob
+#' Draw a gtable object, labeling and putting borders around grobs
 #'
-#' @param x A `gtable` object. Or a `ggplot` or `patchwork` object, which will
-#'   be converted to a gtable, provided those packages are available.
+#' Draws a [gtable][gtable::gtable-package] object overlaid with the figure
+#' layout. I.e., by every non-zero grob is labeled and given a border.
+#'
+#' @param x A `gtable` object, or an object coercible to a `gtable`, like a
+#'   `ggplot` or `patchwork` object.
 #' @param color Color for grob names and border outlines.
 #' @param fill Fill color for borders. Semi-transparent colors work well.
 #' @param fontsize Size for grob names.
@@ -11,10 +14,24 @@
 #'
 #' @seealso [gtable_print()]
 #' @export
-gtable_show_grobs <- function(x, color = "red", fill = "#80FFFF66",
-                              fontsize = 12, labels = TRUE,
-                              show_zeroGrobs = FALSE) {
-
+#' @examples
+#' library(ggplot2)
+#' p <- ggplot(mtcars, aes(hp, mpg)) +
+#'   geom_point()
+#'
+#' # show the plot
+#' p
+#'
+#' # show the plot overlaid with the plot layout
+#' gtable_show_grobs(p)
+gtable_show_grobs <- function(
+  x,
+  color = "red",
+  fill = "#80FFFF66",
+  fontsize = 12,
+  labels = TRUE,
+  show_zeroGrobs = FALSE
+) {
   x <- gtable::as.gtable(x)
 
   layout <- x$layout

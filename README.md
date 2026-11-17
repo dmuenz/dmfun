@@ -37,8 +37,8 @@ Here's a brief description of all **dmfun**'s functions.
   compared to the default gtable print method. There are also extra options for
   conveniently subsetting the printed gtable.
 
-- `gtable_show_grobs()`: Draws a **gtable**, labeling and putting a border
-  around every non-zero grob.
+- `gtable_show_grobs()`: Draws a **gtable** object, labeling and putting border
+  around grobs.
 
 - `lint_package_to_md()`: Lints a package using `lintr::lint_package()` and
   writes the findings to a Markdown file. There's also `lint_simplify()`, a
