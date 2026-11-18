@@ -8,7 +8,7 @@ build_and_preview_article(name = NULL, ...)
 }
 \arguments{
 \item{name}{Name of article. This should be either a path relative to
-\verb{⁠vignettes/}⁠ \emph{without extension}, or \code{index} or \code{README} or \code{NULL}. If
+\verb{vignettes/} \emph{without extension}, or \code{index} or \code{README} or \code{NULL}. If
 \code{NULL} (the default), then the currently active article source file will be
 used.}
 
