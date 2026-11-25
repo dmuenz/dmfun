@@ -1,7 +1,7 @@
 #' Draw a gtable object, labeling and putting borders around grobs
 #'
 #' Draws a [gtable][gtable::gtable-package] object overlaid with the figure
-#' layout. I.e., by every non-zero grob is labeled and given a border.
+#' layout. I.e., by default, every non-zero grob is labeled and given a border.
 #'
 #' @param x A `gtable` object, or an object coercible to a `gtable`, like a
 #'   `ggplot` or `patchwork` object.
@@ -52,15 +52,12 @@ gtable_show_grobs <- function(
     else paste0(min, "-", max)
   }
 
+  # Add grob borders and labels to the gtable
   for (i in seq_len(n_grobs)) {
     grid_id <- layout$grob_id[i]
-    name <- layout$name[i]
-    y_range <- make_range(layout$t[i], layout$b[i])
-    x_range <- make_range(layout$l[i], layout$r[i])
-    label <- paste0(name, " (", y_range, ", ", x_range, ")")
-
     if (!show_zeroGrobs && inherits(x$grobs[[grid_id]], "zeroGrob")) next
 
+    name <- layout$name[i]
     x <- x |> gtable::gtable_add_grob(
       grobs = grid::rectGrob(gp = grid::gpar(col = color, fill = fill)),
       t = layout$t[i],
@@ -71,12 +68,15 @@ gtable_show_grobs <- function(
       z = z_max + i,
       name = paste0(name, "-", "border")
     )
+
     if (isTRUE(labels) || (is.character(labels) && grepl(labels, name))) {
-      rotate_regex <- "^(axis|ylab|strip)-[lr](-\\d+)*$|^ggaxt-ytab|^ggaxt-ylab"
+      y_range <- make_range(layout$t[i], layout$b[i])
+      x_range <- make_range(layout$l[i], layout$r[i])
+      label <- paste0(name, " (", y_range, ", ", x_range, ")")
+
       x <- x |> gtable::gtable_add_grob(
-        grobs = grid::textGrob(
+        grobs = adaptive_text_grob(
           label,
-          rot = if (grepl(rotate_regex, name)) 90 else 0,
           gp = grid::gpar(col = color, fontsize = fontsize)
         ),
         t = layout$t[i],
@@ -93,3 +93,50 @@ gtable_show_grobs <- function(
   plot(x)
   invisible(x)
 }
+
+# Create a grob that chooses horizontal or vertical text at draw time
+adaptive_text_grob <- function(label, gp = grid::gpar()) {
+  grid::grob(
+    label = label,
+    gp = gp,
+    cl = "adaptive_text_grob"
+  )
+}
+
+#' @exportS3Method grid::drawDetails
+drawDetails.adaptive_text_grob <- function(x, recording = TRUE) {
+  horizontal <- grid::textGrob(label = x$label, gp = x$gp)
+
+  # Width & height of horizontal text
+  text_w <- width2mm(grid::grobWidth(horizontal))
+  text_h <- height2mm(grid::grobHeight(horizontal))
+
+  # Available width & height for fitting the text. At draw time, "npc" reflects
+  # the dimensions of the grob's actual gtable cell.
+  vp_w <- width2mm(grid::unit(1, "npc"))
+  vp_h <- height2mm(grid::unit(1, "npc"))
+
+  # Does text fit horizontally?
+  horizontal_fits <- text_w <= vp_w && text_h <= vp_h
+
+  # Compare how much the text overflows in each orientation.
+  # Rotating 90 degrees swaps the text's width and height.
+  horizontal_overflow <- max(text_w / vp_w, text_h / vp_h)
+  vertical_overflow   <- max(text_h / vp_w, text_w / vp_h)
+
+  # Prefer horizontal unless it doesn't fit and vertical fits better
+  use_vertical <-
+    !horizontal_fits &&
+    vertical_overflow < horizontal_overflow
+
+  grid::grid.draw(
+    grid::textGrob(
+      label = x$label,
+      rot = if (use_vertical) 90 else 0,
+      gp = x$gp
+    )
+  )
+}
+
+width2mm <- function(x) grid::convertWidth(x, "mm", valueOnly = TRUE)
+height2mm <- function(x) grid::convertHeight(x, "mm", valueOnly = TRUE)

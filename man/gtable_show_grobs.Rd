@@ -30,7 +30,7 @@ regex such that only grob names matching the regex will be printed.}
 }
 \description{
 Draws a \link[gtable:gtable-package]{gtable} object overlaid with the figure
-layout. I.e., by every non-zero grob is labeled and given a border.
+layout. I.e., by default, every non-zero grob is labeled and given a border.
 }
 \examples{
 library(ggplot2)
