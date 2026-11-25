@@ -19,7 +19,7 @@ build_and_preview_article(name = NULL, ...)
 
 - name:
 
-  Name of article. This should be either a path relative to `⁠vignettes/`⁠
+  Name of article. This should be either a path relative to `vignettes/`
   *without extension*, or `index` or `README` or `NULL`. If `NULL` (the
   default), then the currently active article source file will be used.
 

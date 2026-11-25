@@ -1,8 +1,8 @@
 # Draw a gtable object, labeling and putting borders around grobs
 
 Draws a [gtable](https://gtable.r-lib.org/reference/gtable-package.html)
-object overlaid with the figure layout. I.e., by every non-zero grob is
-labeled and given a border.
+object overlaid with the figure layout. I.e., by default, every non-zero
+grob is labeled and given a border.
 
 ## Usage
 
