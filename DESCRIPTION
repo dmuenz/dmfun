@@ -10,6 +10,8 @@ Description: Hodgepodge collection of functions, mostly for helping with R
 License: MIT + file LICENSE
 URL: https://github.com/dmuenz/dmfun, https://dmuenz.github.io/dmfun/
 BugReports: https://github.com/dmuenz/dmfun/issues
+Depends:
+    R (>= 4.2.0)
 Imports:
     cli,
     glue,
