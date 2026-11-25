@@ -18,7 +18,7 @@ check_color <- function(col, allow_null = FALSE,
     cli::cli_abort("{.arg {arg}} must be {type}.", call = call)
 
   tryCatch(
-    col2rgb(col),
+    grDevices::col2rgb(col),
     error = function(e) {
       msg <- paste("{.arg {arg}}:", conditionMessage(e))
       cli::cli_abort(msg, call = call)
