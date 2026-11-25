@@ -34,6 +34,14 @@ gtable_show_grobs <- function(
 ) {
   x <- gtable::as.gtable(x)
 
+  check_color(color)
+  check_color(fill)
+  rlang::check_number_decimal(fontsize, min = 0, allow_infinite = FALSE)
+  rlang::check_bool(show_zeroGrobs)
+  if (!rlang::is_bool(labels) && !rlang::is_string(labels)) {
+    rlang::stop_input_type(labels, "`TRUE` or `FALSE` or a regex string")
+  }
+
   layout <- x$layout
   n_grobs <- nrow(layout)
 
@@ -92,7 +100,7 @@ gtable_show_grobs <- function(
 
   plot(x)
   invisible(x)
-}
+  }
 
 # Create a grob that chooses horizontal or vertical text at draw time
 adaptive_text_grob <- function(label, gp = grid::gpar()) {
