@@ -19,7 +19,7 @@ gtable_show_grobs(
 
 \item{color}{Color for grob names and border outlines.}
 
-\item{fill}{Fill color for borders. Semi-transparent colors work well.}
+\item{fill}{Fill color for border rectangles.}
 
 \item{fontsize}{Size for grob names.}
 
@@ -30,7 +30,17 @@ regex such that only grob names matching the regex will be printed.}
 }
 \description{
 Draws a \link[gtable:gtable-package]{gtable} object overlaid with the figure
-layout. I.e., by default, every non-zero grob is labeled and given a border.
+layout. I.e., by default, every non-zero grob is labeled and given a
+rectangular border.
+}
+\details{
+For the border rectangles, the default fill color is semi-transparent, so
+grobs in \code{x} are visible but a little faint; this makes the layout info
+easier to read. Setting the fill to be fully opaque (e.g., \code{fill = "white"})
+would make the layout info even easier to see, but then the grobs in \code{x} will
+be totally hidden. And setting the fill be fully transparent (i.e.,
+\code{fill = NA}) would fully show the grobs in \code{x} but potentially make the
+layout info hard to see.
 }
 \examples{
 library(ggplot2)
