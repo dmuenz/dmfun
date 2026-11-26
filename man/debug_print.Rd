@@ -9,15 +9,16 @@ debug_print(x, note = NULL)
 \arguments{
 \item{x}{An object to print.}
 
-\item{note}{An optional string to be printed, useful for giving more context.}
+\item{note}{An optional string (or something coercible to a string) to be
+printed. Useful for giving more context.}
 }
 \value{
 Invisibly returns \code{x}.
 }
 \description{
-The name/call of the object, along with the name of the function from which
-\code{debug_print} is called, are also printed. The whole thing is surrounded by
-horizontal lines. This may be useful for debugging.
+Prints an object's expression, the call stack from which \code{debug_print} is
+called, and the evaluated result of the expression. The whole thing is
+surrounded by horizontal lines. This may be useful for simple debugging.
 }
 \examples{
 # inspect `x` inside a function
@@ -28,6 +29,19 @@ my_sum <- function(x) {
 
 my_sum(1:5)
 
-# debug_print also works out of a function
+# inspect `x_i` inside a nested function
+sum_of_means <- function(...) {
+  sum(
+    sapply(list(...), \(x_i) {
+      debug_print(x_i)
+      mean(x_i)
+    }),
+    na.rm = TRUE
+  )
+}
+
+sum_of_means(1:3, 4:6)
+
+# debug_print also works outside of a function
 debug_print(1:5 + 6)
 }
