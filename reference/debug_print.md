@@ -1,8 +1,9 @@
 # Print an object for debugging
 
-The name/call of the object, along with the name of the function from
-which `debug_print` is called, are also printed. The whole thing is
-surrounded by horizontal lines. This may be useful for debugging.
+Prints an object's expression, the call stack from which `debug_print`
+is called, and the evaluated result of the expression. The whole thing
+is surrounded by horizontal lines. This may be useful for simple
+debugging.
 
 ## Usage
 
@@ -18,7 +19,8 @@ debug_print(x, note = NULL)
 
 - note:
 
-  An optional string to be printed, useful for giving more context.
+  An optional string (or something coercible to a string) to be printed.
+  Useful for giving more context.
 
 ## Value
 
@@ -36,17 +38,43 @@ my_sum <- function(x) {
 my_sum(1:5)
 #> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 #> Printing x
-#>     from my_sum()
+#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval() -> my_sum()
 #> --------
 #> [1] 1 2 3 4 5
 #> ____________________
 #> [1] 15
 
-# debug_print also works out of a function
+# inspect `x_i` inside a nested function
+sum_of_means <- function(...) {
+  sum(
+    sapply(list(...), \(x_i) {
+      debug_print(x_i)
+      mean(x_i)
+    }),
+    na.rm = TRUE
+  )
+}
+
+sum_of_means(1:3, 4:6)
+#> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+#> Printing x_i
+#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval() -> sum_of_means() -> sapply()
+#> --------
+#> [1] 1 2 3
+#> ____________________
+#> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+#> Printing x_i
+#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval() -> sum_of_means() -> sapply()
+#> --------
+#> [1] 4 5 6
+#> ____________________
+#> [1] 7
+
+# debug_print also works outside of a function
 debug_print(1:5 + 6)
 #> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 #> Printing 1:5 + 6
-#>     from eval()
+#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval()
 #> --------
 #> [1]  7  8  9 10 11
 #> ____________________

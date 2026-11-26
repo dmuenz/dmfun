@@ -2,7 +2,7 @@
 
 Draws a [gtable](https://gtable.r-lib.org/reference/gtable-package.html)
 object overlaid with the figure layout. I.e., by default, every non-zero
-grob is labeled and given a border.
+grob is labeled and given a rectangular border.
 
 ## Usage
 
@@ -30,7 +30,7 @@ gtable_show_grobs(
 
 - fill:
 
-  Fill color for borders. Semi-transparent colors work well.
+  Fill color for border rectangles.
 
 - fontsize:
 
@@ -44,6 +44,16 @@ gtable_show_grobs(
 - show_zeroGrobs:
 
   `TRUE`/`FALSE` for whether to show zeroGrobs.
+
+## Details
+
+For the border rectangles, the default fill color is semi-transparent,
+so grobs in `x` are visible but a little faint; this makes the layout
+info easier to read. Setting the fill to be fully opaque (e.g.,
+`fill = "white"`) would make the layout info even easier to see, but
+then the grobs in `x` will be totally hidden. And setting the fill be
+fully transparent (i.e., `fill = NA`) would fully show the grobs in `x`
+but potentially make the layout info hard to see.
 
 ## See also
 
