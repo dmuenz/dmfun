@@ -1,11 +1,12 @@
 #' Print an object for debugging
 #'
-#' The name/call of the object, along with the name of the function from which
-#' `debug_print` is called, are also printed. The whole thing is surrounded by
-#' horizontal lines. This may be useful for debugging.
+#' Prints an object's expression, the call stack from which `debug_print` is
+#' called, and the evaluated result of the expression. The whole thing is
+#' surrounded by horizontal lines. This may be useful for simple debugging.
 #'
 #' @param x An object to print.
-#' @param note An optional string to be printed, useful for giving more context.
+#' @param note An optional string (or something coercible to a string) to be
+#'   printed. Useful for giving more context.
 #'
 #' @returns Invisibly returns `x`.
 #' @export
@@ -18,32 +19,57 @@
 #'
 #' my_sum(1:5)
 #'
-#' # debug_print also works out of a function
+#' # inspect `x_i` inside a nested function
+#' sum_of_means <- function(...) {
+#'   sum(
+#'     sapply(list(...), \(x_i) {
+#'       debug_print(x_i)
+#'       mean(x_i)
+#'     }),
+#'     na.rm = TRUE
+#'   )
+#' }
+#'
+#' sum_of_means(1:3, 4:6)
+#'
+#' # debug_print also works outside of a function
 #' debug_print(1:5 + 6)
 debug_print <- function(x, note = NULL) {
+  if (!is.null(note)) {
+    note_try <- tryCatch(as.character(note), error = identity)
+    if (inherits(note_try, "error")) {
+      rlang::stop_input_type(note, "`NULL` or coercible to character")
+    }
+    note <- note_try
+  }
+
   traces <- rlang::trace_back(bottom = 2)$call |> lapply(\(tr) {
     as.character(tr) |> stats::setNames(names(tr))
   })
-  caller_vec <- NULL
-  for (i in rev(seq_along(traces))) {
-    if (traces[[i]][1] != "<fn>") {
-      caller_vec <- traces[[i]]
-      break
+
+  call_stack <- NULL
+  if (length(traces) > 0) {
+    calls <- NULL
+    for (i in rev(seq_along(traces))) {
+      if (any(grepl("\\bdebug_print\\b", traces[[i]]))) {
+        calls <- sapply(1:i, \(j) traces[[j]][1])
+        break
+      }
     }
-  }
-  caller <- if (identical(caller_vec[[1]], "do.call")) {
-    if ("what" %in% names(caller_vec)) caller_vec["what"]
-    else caller_vec[[2]]
-  } else {
-    caller_vec[[1]]
+
+    if (is.null(calls)) {
+      calls <- sapply(traces, \(tr) tr[1])
+    }
+
+    call_stack <- paste0(calls, "()", collapse = " -> ")
   }
 
-  cat(strrep("\u203E", 20), "\n", sep = "")
-  cat("Printing ", deparse(substitute(x)), "\n", sep = "")
-  if (!is.null(caller)) cat("    from ", caller, "()\n", sep = "")
-  if (!is.null(note)) cat("Note: ", note, "\n", sep = "")
-  cat(strrep("-", 8), "\n", sep = "")
+  cat0(strrep("\u203E", 20), "\n")
+  cat0("Printing ", deparse(substitute(x)), "\n")
+  if (!is.null(call_stack)) cat0("    from ", call_stack, "\n")
+  if (length(note) > 0) cat0("Note: ", note, "\n")
+  cat0(strrep("-", 8), "\n")
   print(x)
-  cat(strrep("_", 20), "\n", sep = "")
+  cat0(strrep("_", 20), "\n")
   invisible(x)
 }

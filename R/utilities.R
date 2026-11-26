@@ -27,3 +27,5 @@ check_color <- function(col, allow_null = FALSE,
 
   invisible(NULL)
 }
+
+cat0 <- function(...) cat(..., sep = "")
