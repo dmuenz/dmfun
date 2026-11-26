@@ -29,9 +29,9 @@ Here's a brief description of all **dmfun**'s functions.
 - `debug_print()`: When debugging a function, debugging tools built into an IDE
   can be great, but sometimes you just want to print an object that's causing
   problems. Instead of using `print()`, try using `debug_print()`: it will print
-  to the console the expression that you pass to it, along with the parent
-  function name and the output of the expression. So it gives you more context
-  than just using `print()`.
+  to the console the expression that you pass to it, along with the call stack
+  and the output of the expression. So it gives you more context than just using
+  `print()`.
 
 - `gtable_print()`: Prints a **gtable** object in an easier-to-read format
   compared to the default gtable print method. There are also extra options for
