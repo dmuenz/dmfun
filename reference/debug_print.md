@@ -38,7 +38,7 @@ my_sum <- function(x) {
 my_sum(1:5)
 #> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 #> Printing x
-#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval() -> my_sum()
+#>     from my_sum()
 #> --------
 #> [1] 1 2 3 4 5
 #> ____________________
@@ -58,13 +58,13 @@ sum_of_means <- function(...) {
 sum_of_means(1:3, 4:6)
 #> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 #> Printing x_i
-#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval() -> sum_of_means() -> sapply()
+#>     from sum_of_means() -> sapply()
 #> --------
 #> [1] 1 2 3
 #> ____________________
 #> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 #> Printing x_i
-#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval() -> sum_of_means() -> sapply()
+#>     from sum_of_means() -> sapply()
 #> --------
 #> [1] 4 5 6
 #> ____________________
@@ -74,7 +74,6 @@ sum_of_means(1:3, 4:6)
 debug_print(1:5 + 6)
 #> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 #> Printing 1:5 + 6
-#>     from pkgdown::build_site_github_pages() -> build_site() -> build_site_local() -> build_reference() -> unwrap_purrr_error() -> withCallingHandlers() -> purrr::map() -> map_() -> with_indexed_errors() -> withCallingHandlers() -> call_with_cleanup() -> .f() -> withCallingHandlers() -> data_reference_topic() -> run_examples() -> highlight_examples() -> downlit::evaluate_and_highlight() -> evaluate::evaluate() -> withRestarts() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> withRestartList() -> withOneRestart() -> doWithOneRestart() -> with_handlers() -> eval() -> eval() -> withCallingHandlers() -> withVisible() -> eval() -> eval()
 #> --------
 #> [1]  7  8  9 10 11
 #> ____________________

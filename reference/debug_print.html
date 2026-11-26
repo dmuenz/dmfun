@@ -81,7 +81,7 @@ printed. Useful for giving more context.</p></dd>
 <span class="r-in"><span><span class="fu">my_sum</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Printing x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     from pkgdown::build_site_github_pages() -&gt; build_site() -&gt; build_site_local() -&gt; build_reference() -&gt; unwrap_purrr_error() -&gt; withCallingHandlers() -&gt; purrr::map() -&gt; map_() -&gt; with_indexed_errors() -&gt; withCallingHandlers() -&gt; call_with_cleanup() -&gt; .f() -&gt; withCallingHandlers() -&gt; data_reference_topic() -&gt; run_examples() -&gt; highlight_examples() -&gt; downlit::evaluate_and_highlight() -&gt; evaluate::evaluate() -&gt; withRestarts() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; with_handlers() -&gt; eval() -&gt; eval() -&gt; withCallingHandlers() -&gt; withVisible() -&gt; eval() -&gt; eval() -&gt; my_sum()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from my_sum()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 3 4 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____________________</span>
@@ -101,13 +101,13 @@ printed. Useful for giving more context.</p></dd>
 <span class="r-in"><span><span class="fu">sum_of_means</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Printing x_i</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     from pkgdown::build_site_github_pages() -&gt; build_site() -&gt; build_site_local() -&gt; build_reference() -&gt; unwrap_purrr_error() -&gt; withCallingHandlers() -&gt; purrr::map() -&gt; map_() -&gt; with_indexed_errors() -&gt; withCallingHandlers() -&gt; call_with_cleanup() -&gt; .f() -&gt; withCallingHandlers() -&gt; data_reference_topic() -&gt; run_examples() -&gt; highlight_examples() -&gt; downlit::evaluate_and_highlight() -&gt; evaluate::evaluate() -&gt; withRestarts() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; with_handlers() -&gt; eval() -&gt; eval() -&gt; withCallingHandlers() -&gt; withVisible() -&gt; eval() -&gt; eval() -&gt; sum_of_means() -&gt; sapply()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from sum_of_means() -&gt; sapply()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____________________</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Printing x_i</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     from pkgdown::build_site_github_pages() -&gt; build_site() -&gt; build_site_local() -&gt; build_reference() -&gt; unwrap_purrr_error() -&gt; withCallingHandlers() -&gt; purrr::map() -&gt; map_() -&gt; with_indexed_errors() -&gt; withCallingHandlers() -&gt; call_with_cleanup() -&gt; .f() -&gt; withCallingHandlers() -&gt; data_reference_topic() -&gt; run_examples() -&gt; highlight_examples() -&gt; downlit::evaluate_and_highlight() -&gt; evaluate::evaluate() -&gt; withRestarts() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; with_handlers() -&gt; eval() -&gt; eval() -&gt; withCallingHandlers() -&gt; withVisible() -&gt; eval() -&gt; eval() -&gt; sum_of_means() -&gt; sapply()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from sum_of_means() -&gt; sapply()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4 5 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____________________</span>
@@ -117,7 +117,6 @@ printed. Useful for giving more context.</p></dd>
 <span class="r-in"><span><span class="fu">debug_print</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span> <span class="op">+</span> <span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Printing 1:5 + 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     from pkgdown::build_site_github_pages() -&gt; build_site() -&gt; build_site_local() -&gt; build_reference() -&gt; unwrap_purrr_error() -&gt; withCallingHandlers() -&gt; purrr::map() -&gt; map_() -&gt; with_indexed_errors() -&gt; withCallingHandlers() -&gt; call_with_cleanup() -&gt; .f() -&gt; withCallingHandlers() -&gt; data_reference_topic() -&gt; run_examples() -&gt; highlight_examples() -&gt; downlit::evaluate_and_highlight() -&gt; evaluate::evaluate() -&gt; withRestarts() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; withRestartList() -&gt; withOneRestart() -&gt; doWithOneRestart() -&gt; with_handlers() -&gt; eval() -&gt; eval() -&gt; withCallingHandlers() -&gt; withVisible() -&gt; eval() -&gt; eval()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  7  8  9 10 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____________________</span>
