@@ -11,6 +11,7 @@
 #' @returns Invisibly returns `x`.
 #' @export
 #' @examples
+#' \dontshow{old_op <- options(rlang_trace_top_env = rlang::current_env())}
 #' # inspect `x` inside a function
 #' my_sum <- function(x) {
 #'   debug_print(x)
@@ -34,6 +35,7 @@
 #'
 #' # debug_print also works outside of a function
 #' debug_print(1:5 + 6)
+#' \dontshow{options(old_op)}
 debug_print <- function(x, note = NULL) {
   if (!is.null(note)) {
     note_try <- tryCatch(as.character(note), error = identity)

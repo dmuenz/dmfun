@@ -21,6 +21,7 @@ called, and the evaluated result of the expression. The whole thing is
 surrounded by horizontal lines. This may be useful for simple debugging.
 }
 \examples{
+\dontshow{old_op <- options(rlang_trace_top_env = rlang::current_env())}
 # inspect `x` inside a function
 my_sum <- function(x) {
   debug_print(x)
@@ -44,4 +45,5 @@ sum_of_means(1:3, 4:6)
 
 # debug_print also works outside of a function
 debug_print(1:5 + 6)
+\dontshow{options(old_op)}
 }
